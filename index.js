@@ -16,8 +16,20 @@ mongoose
     return Recipe.deleteMany()
   })
   .then(() => {
-    // Run your code here, after you have insured that the connection was made
+    Recipe.create({
+      title: "Mia Taco",
+      level: "Easy Peasy",
+      ingredients: ["Tortilla", "mahi mahi", "onions", "tomatoes", "cheese"],
+      cuisine: "South American",
+      dishType: "main_course",
+      image:
+        "https://en.wikipedia.org/wiki/Taco#/media/File:001_Tacos_de_carnitas,_carne_asada_y_al_pastor.jpg",
+      duration: 30,
+      creator: "Jenny",
+    }).then(function (results) {
+      console.log("Taco recipe created", results);
+    })
   })
   .catch(error => {
     console.error('Error connecting to the database', error);
-  });
+  })
